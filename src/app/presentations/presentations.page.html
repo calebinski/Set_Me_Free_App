@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    
+    <ion-title>Presentations</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <!-- <iframe src="//www.slideshare.net/slideshow/embed_code/key/nxQS5h9O1kQTcE" width="668" height="714" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/secret/nxQS5h9O1kQTcE" title="Dummy" target="_blank">Dummy</a> </strong> from <strong><a href="//www.slideshare.net/CalebHillhouse" target="_blank">Caleb Hillhouse</a></strong> </div> -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-virtual-scroll [items]="listedPresentations">
+          <ion-item 
+            [routerLink]="['/', 'presentations', presentation.name]"
+            detail
+            *virtualItem="let presentation">
+            <ion-label>{{presentation.name}}</ion-label>            
+          </ion-item>
+        </ion-virtual-scroll>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

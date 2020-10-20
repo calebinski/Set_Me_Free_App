@@ -1,0 +1,7 @@
+{
+  "name": "SetMeFreeIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
