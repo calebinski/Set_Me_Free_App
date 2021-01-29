@@ -11,7 +11,19 @@ const routes: Routes = [
   {
     path: 'myth-vs-fact',
     loadChildren: () => import('./myth-vs-fact/myth-vs-fact.module').then( m => m.MythVsFactPageModule)
+  },  {
+    path: 'guess-who',
+    loadChildren: () => import('./guess-who/guess-who.module').then( m => m.GuessWhoPageModule)
+  },
+  {
+    path: 'grooming-process',
+    loadChildren: () => import('./grooming-process/grooming-process.module').then( m => m.GroomingProcessPageModule)
+  },
+  {
+    path: 'collect-followers',
+    loadChildren: () => import('./collect-followers/collect-followers.module').then( m => m.CollectFollowersPageModule)
   }
+
 ];
 
 @NgModule({

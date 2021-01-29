@@ -1,48 +1,61 @@
-.flip-container{
-    perspective: 1000px;
-}
-
-.flip-container:hover .flipper, .flip-container.hover .flipper{
-    transform: rotateY(180deg);
-}
-
-.flip-container, .front, .back{
-    width: 320px;
-    height: 480px;
-    margin: auto;
-}
-
-.flipper{
-    transition: 0.6s;
-    transform-style: preserve-3d;
-    position: relative;
-}
-
-.front, .back{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backface-visibility: hidden;
-    margin: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px;
-}
-
-.front{
-    z-index: 2;
-    transform: rotateY(0deg);
-}
-
-.back{
-    transform: rotateY(180deg)
-}
-
 ion-card{
     display: flex;
     flex-direction: column;
     width: 100% !important;
     margin: 0 !important;
     height: 100% !important;
+}
+
+body { font-family: sans-serif; }
+
+.scene {
+  width: 300px;
+  height: 400px;
+  margin: 40px 40px;
+  perspective: 600px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 260px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card__face--front {
+  background: #022851;
+  border-radius: 20px;
+}
+
+.card__face--back {
+  background: #9c2b23;
+  border-radius: 20px;
+  transform: rotateY(180deg);
+}
+
+.myth {
+  --background: #ffbf01;
+}
+
+.truth {
+  background: #00adb5;
 }

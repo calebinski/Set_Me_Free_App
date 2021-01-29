@@ -18,5 +18,41 @@
         </ion-item>
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item [routerLink]="['/', 'activities', 'guess-who']">
+          <ion-icon name="help-outline" slot="start"></ion-icon>
+          <ion-label><h2>Who is the Trafficker?</h2></ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item [routerLink]="['/', 'activities', 'grooming-process']">
+          <ion-icon name="list-outline" slot="start"></ion-icon>
+          <ion-label><h2>Grooming Process</h2></ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item [routerLink]="['/', 'activities', 'collect-followers']">
+          <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+          <ion-label><h2>Collect Followers</h2></ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item [routerLink]="['/', 'activities', 'trustworthy-person']">
+          <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+          <ion-label><h2>Trustworthy Person</h2></ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/activities"></ion-back-button>
     </ion-buttons>
 
     <ion-title>Myth vs. Fact</ion-title>
@@ -9,232 +9,33 @@
 </ion-header>
 
 <ion-content>
-  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-    <div class="flipper">
-      <div class="front">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">Statement 1</ion-card-title>
-          </ion-card-header>
+  <div class="scene scene--card" *ngFor="let c of (cards | async); let i = index">
+    <div class="card" id="{{ 'card-' + c.id }}">
+      <div class="card__face card__face--front">
+        <h3 class="ion-text-center">{{c.statement}}</h3>
 
-          <h3 class="ion-text-center">As many as 50% of individuals being trafficked for sex are male.</h3>
-
-          <ion-list>
-            <ion-radio-group>
-              <ion-item>
-                <ion-label>Myth</ion-label>
-                <ion-radio value="myth"></ion-radio>
-              </ion-item>
-      
-              <ion-item>
-                <ion-label>Fact</ion-label>
-                <ion-radio value="fact"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button class="myth" id="{{'myth-' + c.id}}">MYTH</ion-button>
+            </ion-col>
+    
+            <ion-col></ion-col>
+    
+            <ion-col>
+              <ion-button class="fact" id="{{'fact-' + c.id}}">FACT</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </div>
 
-      <div class="back">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">FACT</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">One study estimates that as many as half of sex trafficking victims and survivors are male. Advocates believe that percentage may be even higher but that male victims are far less likely to be identified. LGBTQ boys and young men are seen as particularly vulnerable to trafficking.</h3>
-        </ion-card>
+      <div class="card__face card__face--back">
+        <h1>{{c.mythOrFact}}</h1>
+        <h3 class="ion-text-center">{{c.answer}}</h3>
       </div>
     </div>
+
+    
   </div>
 
-  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-    <div class="flipper">
-      <div class="front">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">Statement 2</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">Individuals who are trafficked will be desperate to escape their trafficker and will ask for help when they need it.</h3>
-
-          <ion-list>
-            <ion-radio-group>
-              <ion-item>
-                <ion-label>Myth</ion-label>
-                <ion-radio value="myth"></ion-radio>
-              </ion-item>
-      
-              <ion-item>
-                <ion-label>Fact</ion-label>
-                <ion-radio value="fact"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-card>
-      </div>
-
-      <div class="back">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">MYTH</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">Individuals who experience trafficking may not readily seek help due to a number of factors, including shame, self-blame, fear, or even specific instructions from their traffickers regarding how to behave when interacting with others. They do not always self-identify and may not realize that they have rights.</h3>
-        </ion-card>
-      </div>
-    </div>
-  </div>
-
-  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-    <div class="flipper">
-      <div class="front">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">Statement 3</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">If someone has consented to their initial situation it is not considered trafficking.</h3>
-
-          <ion-list>
-            <ion-radio-group>
-              <ion-item>
-                <ion-label>Myth</ion-label>
-                <ion-radio value="myth"></ion-radio>
-              </ion-item>
-      
-              <ion-item>
-                <ion-label>Fact</ion-label>
-                <ion-radio value="fact"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-card>
-      </div>
-
-      <div class="back">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">MYTH</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">Initial consent to commercial sex or labor before the trafficker used force, fraud, or coercion is not relevant.</h3>
-        </ion-card>
-      </div>
-    </div>
-  </div>
-
-  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-    <div class="flipper">
-      <div class="front">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">Statement 4</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">Human trafficking and Human smuggling are not the same things.</h3>
-
-          <ion-list>
-            <ion-radio-group>
-              <ion-item>
-                <ion-label>Myth</ion-label>
-                <ion-radio value="myth"></ion-radio>
-              </ion-item>
-      
-              <ion-item>
-                <ion-label>Fact</ion-label>
-                <ion-radio value="fact"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-card>
-      </div>
-
-      <div class="back">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">FACT</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">Human smuggling and human trafficking are distinct crimes under federal law.</h3>
-          <h3 class="ion-text-center">Human smuggling refers to an illegal border crossing, while human trafficking involves commercial sex acts or labor/services that are induced through force, fraud, or coercion, regardless of whether or not transportation occurs.</h3>
-        </ion-card>
-      </div>
-    </div>
-  </div>
-
-  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-    <div class="flipper">
-      <div class="front">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">Statement 5</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">A person can be trafficked from their home or school.</h3>
-
-          <ion-list>
-            <ion-radio-group>
-              <ion-item>
-                <ion-label>Myth</ion-label>
-                <ion-radio value="myth"></ion-radio>
-              </ion-item>
-      
-              <ion-item>
-                <ion-label>Fact</ion-label>
-                <ion-radio value="fact"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-card>
-      </div>
-
-      <div class="back">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">FACT</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">Individuals are trafficked from their home and go to school everyday.  Someone can be trafficked at school and go home every night.  Trafficking can occur anywhere at anytime. It can happen once or multiple times.</h3>
-        </ion-card>
-      </div>
-    </div>
-  </div>
-
-  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-    <div class="flipper">
-      <div class="front">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">Statement 6</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">Most recruiting happens along gas stations or truck stops along major highways or Interstates</h3>
-
-          <ion-list>
-            <ion-radio-group>
-              <ion-item>
-                <ion-label>Myth</ion-label>
-                <ion-radio value="myth"></ion-radio>
-              </ion-item>
-      
-              <ion-item>
-                <ion-label>Fact</ion-label>
-                <ion-radio value="fact"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-card>
-      </div>
-
-      <div class="back">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title class="ion-text-center">FACT</ion-card-title>
-          </ion-card-header>
-
-          <h3 class="ion-text-center">45% meet their traffickers in person at parties, malls, schools, and other locations, and 55% meet their traffickers via text website or app.</h3>
-        </ion-card>
-      </div>
-    </div>
-  </div>
 </ion-content>

@@ -16,13 +16,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'presentations',
-    loadChildren: () => import('./presentations/presentations.module').then( m => m.PresentationsPageModule),
-    canLoad: [
-      AuthGuard
-    ]
-  },
-  {
     path: 'activities',
     loadChildren: () => import('./activities/activities.module').then( m => m.ActivitiesPageModule),
     canLoad: [
@@ -30,9 +23,30 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'edit',
+    loadChildren: () => import('./edit/edit.module').then( m => m.EditPageModule),
+    canLoad: [
+      AuthGuard
+    ]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
+    canLoad: [
+      AuthGuard
+    ]
+  },
+  {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+    loadChildren: () => import('./auth/auth/auth.module').then( m => m.AuthPageModule)
+  },  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin/admin.module').then( m => m.AdminPageModule)
   }
+
+
+
+
 ];
 
 @NgModule({

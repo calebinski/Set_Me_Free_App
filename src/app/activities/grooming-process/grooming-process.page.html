@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/activities"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Grooming Process</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-reorder-group disabled="false" (ionItemReorder)="doReorder($event)">
+    <ion-reorder *ngFor="let step of shuffledList; let i = index">
+      <ion-item id="{{'step-item-' + step.id}}">
+        <ion-label id="{{'step-label-' + step.id}}">{{step.groomingStep}}</ion-label>
+      </ion-item>
+    </ion-reorder>
+  </ion-reorder-group>
+
+  <ion-button id="submitBtn" color="primary" expand="full" (click)="submitForm()">Send Answers</ion-button>
+</ion-content>
