@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'collect-followers',
     loadChildren: () => import('./collect-followers/collect-followers.module').then( m => m.CollectFollowersPageModule)
+  },
+  {
+    path: 'trustworthy-person',
+    loadChildren: () => import('./trustworthy-person/trustworthy-person.module').then( m => m.TrustworthyPersonPageModule)
   }
 
 ];

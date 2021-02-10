@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/edit"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Myth vs. Fact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label>Statement:</ion-label>
+      </ion-col>
+
+      <ion-col>
+        <ion-textarea auto-grow="true" id="txtStatement"></ion-textarea>
+      </ion-col>
+    </ion-row>
+
+    <ion-radio-group id="radMythFact">
+      <ion-row>
+        <ion-col>
+          <ion-label>Myth or Fact?</ion-label>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-label>Myth</ion-label>
+            <ion-radio value="Myth"></ion-radio>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-label>Fact</ion-label>
+            <ion-radio value="Fact"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-radio-group>
+    
+    <ion-row>
+      <ion-col>
+        <ion-label>Answer:</ion-label>
+      </ion-col>
+
+      <ion-col>
+        <ion-textarea auto-grow="true" id="txtAnswer"></ion-textarea>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button id="submitBtn" color="primary" expand="full" (click)="submitForm()">Submit</ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let entry of (entries | async); let i = index">
+      <ion-label>
+        <p>Statement: {{entry.statement}}</p>
+        <p>Myth or Fact: {{entry.mythOrFact}}</p>
+        <p>Answer: {{entry.answer}}</p>
+      </ion-label>
+      <ion-button color="danger" class="delete" id="{{'delete-' + entry.id}}">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="primary" class="edit" id="{{'edit-' + entry.id}}">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

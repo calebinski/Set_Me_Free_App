@@ -17,6 +17,15 @@ export interface AuthResponseData {
   registered?: boolean;
 }
 
+export interface RefreshResponseData {
+  expires_in: string;
+  token_type: string;
+  refresh_token: string;
+  id_token: string;
+  user_id: string;
+  project_id: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -104,15 +113,16 @@ export class AuthService implements OnDestroy{
     const expirationTime = new Date(new Date().getTime() + (+userData.expiresIn * 1000));
     const user = new User(userData.localId, userData.email, userData.idToken, expirationTime);
     this._user.next(user);
-    this.storeAuthData(userData.localId, userData.idToken, expirationTime.toISOString(), userData.email);
+    this.storeAuthData(userData.localId, userData.idToken, userData.refreshToken, expirationTime.toISOString(), userData.email);
     this.autoLogout(user.tokenDuration);
   }
 
-  private storeAuthData(userId: string, token: string, tokenExpirationDate: string, email: string)
+  private storeAuthData(userId: string, token: string, refreshToken: string, tokenExpirationDate: string, email: string)
   {
     const data = JSON.stringify({
       userId: userId,
       token: token,
+      refreshToken: refreshToken,
       tokenExpirationDate: tokenExpirationDate,
       email: email
     });
@@ -133,6 +143,7 @@ export class AuthService implements OnDestroy{
         tokenExpirationDate: string; 
         userId: string;
         email: string;
+        refreshToken: string;
       };
 
       const expirationTime = new Date(parsedData.tokenExpirationDate);
@@ -164,8 +175,28 @@ export class AuthService implements OnDestroy{
     }
 
     this.activeLogoutTimer = setTimeout(() => {
-      console.log("Auto log out.");
-      this.logout();
+      console.log("Refreshing login.");
+      from(Plugins.Storage.get({key: 'authData'}))
+        .pipe(map(storedData => {
+          const parsedData = JSON.parse(storedData.value) as {
+            token: string; 
+            refreshToken: string;
+            tokenExpirationDate: string; 
+            userId: string;
+            email: string;
+          };
+          
+          let postData = {
+            "grant_type" : "refresh_token",
+            "refresh_token" : parsedData.refreshToken
+          };
+
+          this.httpClient.post(`https://securetoken.googleapis.com/v1/token?key=${environment.firebaseApiKey}`, postData)
+          .subscribe((response) => {
+            console.log("Refresh Response: ", response);
+          });
+        }));
+      //this.logout();
     }, duration);
   }
 }

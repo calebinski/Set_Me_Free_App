@@ -10,9 +10,9 @@
 
 <ion-content>
   <ion-reorder-group disabled="false" (ionItemReorder)="doReorder($event)">
-    <ion-reorder *ngFor="let step of shuffledList; let i = index">
+    <ion-reorder *ngFor="let step of groomingSteps; let i = index">
       <ion-item id="{{'step-item-' + step.id}}">
-        <ion-label id="{{'step-label-' + step.id}}">{{step.groomingStep}}</ion-label>
+        <ion-label id="{{'step-label-' + step.id}}" [innerHtml]="step">{{step}}</ion-label>
       </ion-item>
     </ion-reorder>
   </ion-reorder-group>

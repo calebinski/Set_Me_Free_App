@@ -24,7 +24,7 @@ export class GuessWhoPage implements OnInit {
 
   ionViewWillEnter()
   {
-    this.traffickers = this.httpClient.get('https://localhost:44380/api/GuessWhoes');
+    this.traffickers = this.httpClient.get('https://setmefreeapi.azurewebsites.net/api/GuessWhoes');
     this.traffickers.subscribe(data => {
       //console.log("Traffickers: ", data);
       for(let pic of data)
@@ -41,16 +41,16 @@ export class GuessWhoPage implements OnInit {
 
     for(let picture of this.traffickerPictures)
     {
-      var rangeElement = <HTMLInputElement> document.getElementById('rating-'+picture.pictureID);
-      
+      var radioElement = <HTMLInputElement> document.getElementById('isTrafficker-'+picture.pictureID);
+
       let currentDate: Date = new Date();
       let postData = {
         "PictureID" : picture.pictureID,
-        "Rating" : rangeElement.value,
+        "Rating" : +radioElement.value,
         "DateTimeAnswered" : currentDate.toISOString()
       };
 
-      this.httpClient.post("https://localhost:44380/api/GuessWhoAnswers", postData)
+      this.httpClient.post("https://setmefreeapi.azurewebsites.net/api/GuessWhoAnswers", postData)
       .subscribe((response) => {
         console.log("Response: ", response);
       });

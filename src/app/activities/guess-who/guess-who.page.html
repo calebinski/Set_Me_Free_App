@@ -18,173 +18,24 @@
       <ion-col></ion-col>
     </ion-row>
 
-    <ion-row>
-      <ion-col>
-        <ion-range id="{{'rating-' + picture.pictureID}}" color="primary" pin="true" min="-100" max="100">
-          <ion-icon slot="start" name="sad-outline"></ion-icon>
-          <ion-icon slot="end" name="happy-outline"></ion-icon>
-        </ion-range>
-      </ion-col>
-    </ion-row>
+    <ion-radio-group id="{{'isTrafficker-' + picture.pictureID}}">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Yes</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-radio-group>
   </ion-grid>
 
   <ion-button id="submitBtn" color="primary" expand="full" (click)="submitForm()">Send Answers</ion-button>
 </ion-content>
-
-<!-- <ion-content class="ion-padding">
-  <ion-row class="ion-text-center">
-    <ion-col>
-      Name: Melody; State: Iowa; Role: Sister
-    </ion-col>
-  </ion-row>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-img src="../assets/traffickers/Trafficker1.PNG" style="width: 300px; height: 300px;"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-range color="primary" pin="true" min="-100" max="100">
-          <ion-icon slot="start" name="sad-outline"></ion-icon>
-          <ion-icon slot="end" name="happy-outline"></ion-icon>
-        </ion-range>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-text-center">
-      <ion-col>
-        Name: John Smith; States: Iowa, Nebraska, South Dakota; Role: Doctor
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-img src="../assets/traffickers/Trafficker2.PNG" style="width: 300px; height: 300px;"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-range color="primary" pin="true" min="-100" max="100">
-          <ion-icon slot="start" name="sad-outline"></ion-icon>
-          <ion-icon slot="end" name="happy-outline"></ion-icon>
-        </ion-range>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-text-center">
-      <ion-col>
-        Name: Aldair Smith; States: Iowa; Role: Neighbor
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-img src="../assets/traffickers/Trafficker3.PNG" style="width: 300px; height: 300px;"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-range color="primary" pin="true" min="-100" max="100">
-          <ion-icon slot="start" name="sad-outline"></ion-icon>
-          <ion-icon slot="end" name="happy-outline"></ion-icon>
-        </ion-range>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-text-center">
-      <ion-col>
-        Name: Laura Smith; States: Iowa; Role: Neighbor
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-img src="../assets/traffickers/Trafficker4.PNG" style="width: 300px; height: 300px;"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-range color="primary" pin="true" min="-100" max="100">
-          <ion-icon slot="start" name="sad-outline"></ion-icon>
-          <ion-icon slot="end" name="happy-outline"></ion-icon>
-        </ion-range>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-text-center">
-      <ion-col>
-        Name: Michelle Smith; States: Nebraska; Role: Mother
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-img src="../assets/traffickers/Trafficker5.PNG" style="width: 300px; height: 300px;"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-range color="primary" pin="true" min="-100" max="100">
-          <ion-icon slot="start" name="sad-outline"></ion-icon>
-          <ion-icon slot="end" name="happy-outline"></ion-icon>
-        </ion-range>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-text-center">
-      <ion-col>
-        Name: Big Bruh; States: Nebraska; Role: Neighbor
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-img src="../assets/traffickers/Trafficker6.PNG" style="width: 300px; height: 300px;"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-range color="primary" pin="true" min="-100" max="100">
-          <ion-icon slot="start" name="sad-outline"></ion-icon>
-          <ion-icon slot="end" name="happy-outline"></ion-icon>
-        </ion-range>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-text-center">
-      <ion-col>
-        Name: Brandon Smith; States: Nebraska; Role: Social Media Friend
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-img src="../assets/traffickers/Trafficker7.PNG" style="width: 300px; height: 300px;"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-range color="primary" pin="true" min="-100" max="100">
-          <ion-icon slot="start" name="sad-outline"></ion-icon>
-          <ion-icon slot="end" name="happy-outline"></ion-icon>
-        </ion-range>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="ion-text-center">
-      <ion-col>
-        Name: Jacqueline Smith; States: Nebraska; Role: Social Media Friend
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-img src="../assets/traffickers/Trafficker8.PNG" style="width: 300px; height: 300px;"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-range color="primary" pin="true" min="-100" max="100">
-          <ion-icon slot="start" name="sad-outline"></ion-icon>
-          <ion-icon slot="end" name="happy-outline"></ion-icon>
-        </ion-range>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-button>Send Results</ion-button>
-</ion-content> -->

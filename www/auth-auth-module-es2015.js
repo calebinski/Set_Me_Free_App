@@ -133,8 +133,6 @@ let AuthPage = class AuthPage {
         this.router = router;
         this.apiService = apiService;
         this.httpClient = httpClient;
-        //this.users = this.httpClient.get('https://localhost:44386/api/User');
-        //this.users.subscribe(data => {console.log('my data: ', data)});
     }
     ngOnInit() {
     }

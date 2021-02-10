@@ -10,7 +10,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./grooming-process.page.scss'],
 })
 export class GroomingProcessPage implements OnInit {
-  groomingSteps: Observable<any>;
+  groomingSteps: string[] = [
+    "They <b>target</b> you.",
+    "They gain your <b>trust</b>",
+    "They <b>fill</b> a need.",
+    "They <b>isolate</b> you.",
+    "They <b>sexualize</b> the individual.",
+    "They <b>maintain</b> control."
+  ];
   shuffledList: {groomingStep: string, order: number}[] = [];
   answerOrder: string = "";
   
@@ -23,23 +30,13 @@ export class GroomingProcessPage implements OnInit {
 
   doReorder(ev: CustomEvent<ItemReorderEventDetail>)
   {
-    this.shuffledList = ev.detail.complete(this.shuffledList);
-    console.log("After complete: ", this.shuffledList);
+    this.groomingSteps = ev.detail.complete(this.groomingSteps);
+    console.log("After complete: ", this.groomingSteps);
   }
 
   ionViewWillEnter()
   {
-    this.groomingSteps = this.httpClient.get('https://localhost:44380/api/GroomingSteps');
-    this.groomingSteps.subscribe(data => {
-      for(let i = 0; i < data.length; i++)
-      {
-        let newStep: {groomingStep: string, order: number} = {groomingStep: data[i].groomingStep, order: data[i].id};
-        this.shuffledList.push(newStep);
-      }
-
-      this.shuffleOrder(this.shuffledList);
-      console.log("Post-shuffled list: ", this.shuffledList)
-    });
+    this.shuffleOrder(this.groomingSteps);
   }
 
   //randomize order of steps
@@ -61,15 +58,15 @@ export class GroomingProcessPage implements OnInit {
 
   submitForm()
   {
-    for(let i = 0; i < this.shuffledList.length; i++)
+    for(let i = 0; i < this.groomingSteps.length; i++)
     {
       if(i == 0)
       {
-        this.answerOrder = this.shuffledList[i].order.toString();
+        this.answerOrder = this.groomingSteps[i];
       }
       else
       {
-        this.answerOrder = this.answerOrder.concat("," + this.shuffledList[i].order.toString());
+        this.answerOrder = this.answerOrder.concat("," + this.groomingSteps[i]);
       }
     }
     console.log("Order to be submitted: ", this.answerOrder);
@@ -80,7 +77,7 @@ export class GroomingProcessPage implements OnInit {
         "DateTimeAnswered" : currentDate.toISOString()
       };
 
-      this.httpClient.post("https://localhost:44380/api/GroomingStepAnswers", postData)
+      this.httpClient.post("https://setmefreeapi.azurewebsites.net/api/GroomingStepAnswers", postData)
       .subscribe((response) => {
         console.log("Response: ", response);
       });

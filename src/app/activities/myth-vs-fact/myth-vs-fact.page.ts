@@ -71,7 +71,7 @@ export class MythVsFactPage implements OnInit {
       "Answer" : answer
     };
 
-    this.httpClient.post('https://localhost:44380/api/MythFactAnswers', postData)
+    this.httpClient.post('https://setmefreeapi.azurewebsites.net/api/MythFactAnswers', postData)
     .subscribe((response) => {
       console.log("Response: ", response);
     });
@@ -80,6 +80,6 @@ export class MythVsFactPage implements OnInit {
   ionViewWillEnter()
   {
     console.log("On Will Enter.");
-    this.cards = this.httpClient.get('https://localhost:44380/api/MythFacts'); 
+    this.cards = this.httpClient.get('https://setmefreeapi.azurewebsites.net/api/MythFacts'); 
   }
 }

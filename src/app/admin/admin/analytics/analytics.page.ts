@@ -61,8 +61,8 @@ export class AnalyticsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.mythFacts = this.http.get('https://localhost:44380/api/MythFacts');
-    this.mythFactsAnswers = this.http.get('https://localhost:44380/api/MythFactAnswers');
+    this.mythFacts = this.http.get('https://setmefreeapi.azurewebsites.net/api/MythFacts');
+    this.mythFactsAnswers = this.http.get('https://setmefreeapi.azurewebsites.net/api/MythFactAnswers');
 
     this.mythFactsAnswers.subscribe(answerData => {
       console.log("Data:", answerData);

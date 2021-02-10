@@ -10,6 +10,14 @@ const routes: Routes = [
   },  {
     path: 'guess-who',
     loadChildren: () => import('./guess-who/guess-who.module').then( m => m.GuessWhoPageModule)
+  },
+  {
+    path: 'trustworthy-person',
+    loadChildren: () => import('./trustworthy-person/trustworthy-person.module').then( m => m.TrustworthyPersonPageModule)
+  },
+  {
+    path: 'myth-vs-fact',
+    loadChildren: () => import('./myth-vs-fact/myth-vs-fact.module').then( m => m.MythVsFactPageModule)
   }
 
 ];

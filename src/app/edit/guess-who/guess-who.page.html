@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -30,4 +30,15 @@
   </ion-grid>
 
   <ion-button color="primary" expand="full" (click)="submitForm()">Upload Image</ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let picture of traffickerPictures; let i = index">
+      <ion-item class="ion-text-center">
+        <ion-img [src]="picture.picture"></ion-img>
+        <ion-button color="danger" class="delete" slot="end" id="{{'delete-' + picture.pictureID}}">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-item>
+  </ion-list>
 </ion-content>

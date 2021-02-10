@@ -20,7 +20,6 @@ body { font-family: sans-serif; }
   height: 100%;
   transition: transform 1s;
   transform-style: preserve-3d;
-  cursor: pointer;
   position: relative;
 }
 
@@ -42,7 +41,7 @@ body { font-family: sans-serif; }
 }
 
 .card__face--front {
-  background: #022851;
+  background: #03458d;
   border-radius: 20px;
 }
 
@@ -56,6 +55,6 @@ body { font-family: sans-serif; }
   --background: #ffbf01;
 }
 
-.truth {
-  background: #00adb5;
+.fact {
+  --background: #00adb5;
 }
